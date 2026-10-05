@@ -6,9 +6,6 @@ from urllib.parse import quote_plus
 import pandas as pd
 import requests
 import streamlit as st
-from dotenv import load_dotenv
-
-load_dotenv()
 
 st.set_page_config(page_title="Companies House Company Monitor", page_icon="🏢", layout="wide")
 
@@ -166,7 +163,7 @@ with st.sidebar:
     st.header("Search settings")
     api_key = get_api_key()
     if not api_key:
-        st.error("Add COMPANIES_HOUSE_API_KEY to Streamlit Secrets or .env.")
+        st.error("Add COMPANIES_HOUSE_API_KEY to Streamlit Secrets or an environment variable.")
     today = date.today()
     start_date = st.date_input("Incorporated from", value=today, max_value=today)
     end_date = st.date_input("Incorporated to", value=today, min_value=start_date, max_value=today)
